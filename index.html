@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Foto com JS</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css"
+    integrity="sha384-zCbKRCUGaJDkqS1kPbPd7TveP5iyJE0EjAuZQTgFLD2ylzuqKfdKlfG/eSrtxUkn" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  
+  <div class="container py-5">
+    <h1 class="text-center mb-5">Tirando fotos com Javascript</h1>
+    <form class="form" action="#">
+      <!-- Progress bar -->
+      <div class="progressbar">
+  
+        <div class="progress" id="progress"></div>
+  
+        <div class="progress-step progress-step-active" data-title="Dados Pessoais"></div>
+        <div class="progress-step" data-title="Contato"></div>
+        <div class="progress-step" data-title="Contato"></div>
+        <div class="progress-step" data-title="Confirmar Dados"></div>
+      </div>
+  
+      <!-- Steps -->
+      <div class="form-step form-step-active">
+        <div class="container-foto">
+          <input type="file" id="file" accept="image/*" hidden>
+          <div class="img-area" data-img="Foto.png">
+            <svg class="icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+              style="fill: rgba(0, 0, 0, 1);">
+              <path
+                d="M18.944 11.112C18.507 7.67 15.56 5 12 5 9.244 5 6.85 6.611 5.757 9.15 3.609 9.792 2 11.82 2 14c0 2.757 2.243 5 5 5h11c2.206 0 4-1.794 4-4a4.01 4.01 0 0 0-3.056-3.888zM13 14v3h-2v-3H8l4-5 4 5h-3z">
+              </path>
+            </svg>
+            <h3>Upload de Imagem</h3>
+            <p>A imagem deve ter no máximo <span>2MB</span></p>
+          </div>
+          <button class="select-image btn btn-primary btn-block py-3">Selecionar Imagem</button>
+        </div>
+  
+  
+        <div class="d-flex justify-content-end mt-3">
+          <a href="javascript:void(0)" class="btn btn-next btn-outline-secondary w-50 ml-auto">Próximo</a>
+        </div>
+      </div>
+      <div class="form-step">
+        <div class="d-flex align-items-center justify-content-center my-3">
+          <div class="btn btn-outline-secondary start-video " title='Câmera'>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+              style="fill: rgba(0, 0, 0, 1);">
+              <path
+                d="M12 8c-2.168 0-4 1.832-4 4s1.832 4 4 4 4-1.832 4-4-1.832-4-4-4zm0 6c-1.065 0-2-.935-2-2s.935-2 2-2 2 .935 2 2-.935 2-2 2z">
+              </path>
+              <path
+                d="M20 5h-2.586l-2.707-2.707A.996.996 0 0 0 14 2h-4a.996.996 0 0 0-.707.293L6.586 5H4c-1.103 0-2 .897-2 2v11c0 1.103.897 2 2 2h16c1.103 0 2-.897 2-2V7c0-1.103-.897-2-2-2zM4 18V7h3c.266 0 .52-.105.707-.293L10.414 4h3.172l2.707 2.707A.996.996 0 0 0 17 7h3l.002 11H4z">
+              </path>
+            </svg>
+            Câmera
+          </div>
+          <div class="btn btn-outline-secondary stop-video mx-2" title='Stop'>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+              style="fill: rgba(0, 0, 0, 1);">
+              <path d="M8.014 12.135c.074 2.062 1.789 3.777 3.851 3.851l-3.851-3.851z"></path>
+              <path
+                d="M4 20h11.879l-2-2H4V8.121L2.144 6.265A1.976 1.976 0 0 0 2 7v11c0 1.103.897 2 2 2zM20 5h-2.586l-2.707-2.707A.996.996 0 0 0 14 2h-4a.997.997 0 0 0-.707.293L6.586 5h-.172L3.707 2.293 2.293 3.707l18 18 1.414-1.414-.626-.626A1.98 1.98 0 0 0 22 18V7c0-1.103-.897-2-2-2zm-6.081 7.505-2.424-2.425c.163-.046.331-.08.505-.08 1.065 0 2 .935 2 2 0 .174-.033.342-.081.505zm1.502 1.501A3.881 3.881 0 0 0 16 12c0-2.168-1.832-4-4-4-.729 0-1.412.22-2.007.579L7.914 6.5l2.5-2.5h3.172l2.707 2.707A.996.996 0 0 0 17 7l3-.001V18h-.586l-3.993-3.994z">
+              </path>
+            </svg>
+            Parar
+          </div>
+          <div class="btn btn-outline-secondary take-picture " title='Tirar uma foto'>
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+              style="fill: rgba(0, 0, 0, 1);">
+              <path d="M4 5h13v7h2V5c0-1.103-.897-2-2-2H4c-1.103 0-2 .897-2 2v12c0 1.103.897 2 2 2h8v-2H4V5z"></path>
+              <path d="m8 11-3 4h11l-4-6-3 4z"></path>
+              <path d="M19 14h-2v3h-3v2h3v3h2v-3h3v-2h-3z"></path>
+            </svg>
+            Foto
+          </div>
+        </div>
+  
+        <div class="content-picture my-4 d-none">
+          <video src="" id="videoFeed" muted autoplay></video>
+          <canvas id="picture-canvas"></canvas>
+        </div>
+  
+        <div class="btns-group">
+          <a href="javascript:void(0)" class="btn btn-prev btn-outline-secondary">Voltar</a>
+          <a href="javascript:void(0)" class="btn btn-next btn-outline-secondary">Próximo</a>
+        </div>
+      </div>
+      <div class="form-step">
+  
+        <div class="btns-group">
+          <a href="javascript:void(0)" class="btn btn-prev btn-outline-secondary">Voltar</a>
+          <a href="javascript:void(0)" class="btn btn-next btn-outline-secondary">Próximo</a>
+        </div>
+      </div>
+      <div class="form-step">
+  
+        <img src="" alt="" id="imagem1">
+  
+        <div class="btns-group">
+          <a href="javascript:void(0)" class="btn btn-prev btn-outline-secondary">Voltar</a>
+          <input type="submit" value="Confirmar" class="btn btn-success" />
+        </div>
+      </div>
+    </form>
+  </div>
+
+<footer>
+  <p class="text-center">Desenvolvido por &copy; Fabinho Flauzino</p>
+</footer>
+  <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+
+</html>
